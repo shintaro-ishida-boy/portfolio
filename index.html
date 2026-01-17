@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="石田晋太郎のポートフォリオサイト2026。ランディングページやバナー制作などのWeb制作実績をご紹介します。">
+    <meta name="keywords" content="ポートフォリオ,Web制作,ランディングページ,バナーデザイン,石田晋太郎">
+    <meta name="author" content="石田晋太郎">
+    
+    <!-- OGP設定 -->
+    <meta property="og:title" content="Portfolio 2026 - 石田晋太郎">
+    <meta property="og:description" content="石田晋太郎のポートフォリオサイト2026。ランディングページやバナー制作などのWeb制作実績をご紹介します。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/">
+    <meta property="og:image" content="https://example.com/images/ogp.jpg">
+    <meta property="og:site_name" content="Portfolio 2026">
+    <meta property="og:locale" content="ja_JP">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Portfolio 2026 - 石田晋太郎">
+    <meta name="twitter:description" content="石田晋太郎のポートフォリオサイト2026。ランディングページやバナー制作などのWeb制作実績をご紹介します。">
+    <meta name="twitter:image" content="https://example.com/images/ogp.jpg">
+    
+    <title>Portfolio2026 - 石田晋太郎</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Great+Vibes&family=Noto+Serif+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../images/logo.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav__logo">
+                <a href="index.html">
+                    <img src="../images/logo.png" alt="ロゴ" class="nav__logo-image">
+                </a>
+            </div>
+    <ul class="nav__list">
+            <ul class="nav__list">
+                <li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
+                <li class="nav__item nav__item--dropdown">
+                    <a href="#works" class="nav__link">Works</a>
+                    <ul class="nav__dropdown">
+                        <li class="nav__dropdown-item"><a href="#works-lp" class="nav__dropdown-link">ランディングページ</a></li>
+                        <li class="nav__dropdown-item"><a href="#banner" class="nav__dropdown-link">バナー</a></li>
+                    </ul>
+                </li>
+                <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                <li class="nav__item"><a href="#profile" class="nav__link">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main>
+        <!-- ファーストビュー -->
+        <section id="home" class="hero">
+            <div class="hero__container">
+                <h1 class="hero__title">Portfolio2026</h1>
+                <div class="hero__name-wrapper">
+                    <p class="hero__name-jp">石田 晋太郎</p>
+                    <p class="hero__name-en">Shintaro Ishida</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Worksセクション -->
+        <section id="works" class="works">
+            <div class="section-container">
+                <h2 class="section-title">Works</h2>
+                <p class="works__intro fade-in-item">デザイン制作の実績としてはweb用広告バナーのコンペにて一度採用していただいた実績があります。<br>本サイトに掲載されている主な制作物としては、架空企業の広告バナーやランディングページとなっております。</p>
+                
+                <!-- LP(ランディングページ) -->
+                <article class="works__category" id="works-lp">
+                    <h3 class="works__category-title">ランディングページ</h3>
+                    
+                    <!-- LP1 -->
+                    <div class="works__lp-item">
+                        <a href="index2.html" class="hover-link">
+                            <span class="hover-overlay"></span>
+                            <span class="works__lp-text">
+                                <span class="works__lp-text-jp">美容液販促用</span><span class="works__lp-text-en">LP</span>
+                            </span>
+                            <img src="../images/serum.png" alt="化粧品ランディングページ" class="full-image">
+                        </a>
+                    </div>
+                    
+                    <!-- LP2 -->
+                    <div class="works__lp-item">
+                        <a href="index3.html" class="hover-link">
+                            <span class="hover-overlay"></span>
+                            <span class="works__lp-text works__lp-text--large">
+                                <span class="works__lp-text-jp">旅行プラン</span><span class="works__lp-text-en">LP</span>
+                            </span>
+                            <img src="../images/onsen.png" alt="旅行ランディングページ" class="full-image">
+                        </a>
+                    </div>
+                </article>
+
+                <!-- バナー -->
+                <article class="works__category" id="banner">
+                    <h3 class="works__category-title">バナー</h3>
+                    <div class="works__banners">
+                        <div class="works__banner-item fade-in-item">
+                            <a href="index4.html" class="active-scale">
+                                <img src="../images/task.jpg" alt="バナー制作実績1" class="works__banner-image">
+                            </a>
+                        </div>
+                        <div class="works__banner-item fade-in-item">
+                            <a href="index5.html" class="active-scale">
+                                <img src="../images/serum-banner1.jpg" alt="バナー制作実績2" class="works__banner-image">
+                            </a>
+                        </div>
+                        <div class="works__banner-item fade-in-item">
+                            <a href="index6.html" class="active-scale">
+                                <img src="../images/serum-banner2.jpg" alt="バナー制作実績3" class="works__banner-image">
+                            </a>
+                        </div>
+                        <div class="works__banner-item fade-in-item">
+                            <a href="index7.html" class="active-scale">
+                                <img src="../images/english.jpg" alt="バナー制作実績4" class="works__banner-image">
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Aboutセクション -->
+        <section id="about" class="about section-top-spacing">
+            <div class="section-container">
+                <h2 class="section-title">About</h2>
+                <div class="content-layout">
+                    <div class="content-layout__image">
+                        <div class="image-wrapper">
+                            <img src="../images/about/Frame 6.jpg"alt="About画像" class="full-image">
+                        </div>
+                    </div>
+                    <div class="content-layout__text">
+                        <h3 class="content-layout__title">制作について</h3>
+                        <p class="content-layout__description about__description">
+                            いかに簡潔に、いかに自分らしさを出すか。このポートフォリオサイトの制作を通して、改めてデザインの難しさと楽しさを感じました。何年先もこの初制作のサイトを見て初心を忘れないようしたいと思います。
+                        </p>
+                        <a href="index8.html" class="more-link">
+                            <span class="more-link__text">もっと見る</span>
+                            <img src="../images/arrow.png" alt="" class="more-link__icon">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profileセクション -->
+        <section id="profile" class="profile section-top-spacing">
+            <div class="section-container">
+                <h2 class="section-title">Profile</h2>
+                <div class="content-layout">
+                    <div class="content-layout__image">
+                        <div class="image-wrapper">
+                            <img src="../images/sika.jpg" alt="石田晋太郎のプロフィール写真" class="full-image">
+                        </div>
+                    </div>
+                    <div class="content-layout__text">
+                        <h3 class="content-layout__title">石田晋太郎</h3>
+                        <p class="content-layout__description">
+                            前職での事務職にてHPの更新依頼の担当していた際、自分でできるようになりたいと思い、WEBデザインに興味を持ち始める。2025年7月より開始したHTMLの勉強を皮切りにWEBデザインの学習をスタート。デザインの勉強を進めていく上でAIにも興味を持ち始め、今では日々の生活の一部となっている。趣味は旅行。
+                        </p>
+                        <a href="index9.html" class="more-link">
+                            <span class="more-link__text">より詳しく</span>
+                            <img src="../images/arrow.png" alt="" class="more-link__icon">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="footer__container">
+            <p class="footer__copyright">&copy; 2026 Shintaro Ishida. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/index.js"></script>
+</body>
+</html>
