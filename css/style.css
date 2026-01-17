@@ -1,0 +1,801 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   Reset & Base
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Noto Serif JP', serif;
+    color: #333;
+    background-color: #f2f2f2;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ==========================================================================
+   Common Classes（共通クラス）
+   ========================================================================== */
+
+/* アニメーション定義 */
+@keyframes slideInFromLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRandom {
+    from {
+        opacity: 0;
+        transform: translate(var(--random-x), var(--random-y));
+    }
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInIconFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px) translateY(3px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) translateY(3px);
+    }
+}
+
+@keyframes slideOutToRight {
+    from {
+        opacity: 1;
+        transform: translateX(0) translateY(3px);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(50px) translateY(3px);
+    }
+}
+
+/* 共通:セクションコンテナ */
+.section-container {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+/* 共通:セクションタイトル */
+.section-title {
+    font-size: 48px;
+    font-weight: 500;
+    margin-bottom: 40px;
+    opacity: 0;
+    transform: translateX(-100px);
+}
+
+.section-title.is-visible {
+    animation: slideInFromLeft 1s ease-out forwards;
+}
+
+/* 共通:ホバー可能なリンク（オーバーレイ付き） */
+.hover-link {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    width: 100%;
+    margin: 0 auto;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.15));
+}
+
+.hover-link:hover {
+    filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+}
+
+.hover-link:active {
+    transform: scale(0.98);
+    filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+}
+
+/* 共通:ホバー時のオーバーレイ */
+.hover-overlay {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.31);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hover-link:hover .hover-overlay {
+    opacity: 1;
+}
+
+/* 共通:ホバー時のテキスト */
+.hover-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 24px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+    text-align: center;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.hover-link:hover .hover-text {
+    opacity: 1;
+}
+
+/* 共通:フルサイズ画像 */
+.full-image {
+    width: 100%;
+    display: block;
+}
+
+/* 共通:アクティブ時にスケール変更 */
+.active-scale {
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.active-scale:active {
+    transform: scale(0.98);
+}
+
+/* 共通:フェードインアイテム */
+.fade-in-item {
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.fade-in-item.is-visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* 共通:もっと見るリンク */
+.more-link {
+    font-size: 16px;
+    color: #272E3B;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 15px 15px 15px;
+    margin: -15px 0 -15px -15px;
+    width: fit-content;
+}
+
+.more-link__text {
+    display: inline-block;
+}
+
+.more-link__icon {
+    width: 42px;
+    height: auto;
+    display: block;
+    opacity: 0;
+    transform: translateX(-50px) translateY(3px);
+}
+
+.more-link__icon.is-visible {
+    animation: slideInIconFromLeft 1s ease-out forwards;
+}
+
+.more-link__icon.slide-out {
+    animation: slideOutToRight 0.5s ease forwards;
+}
+
+.more-link__icon.slide-in {
+    animation: slideInIconFromLeft 0.5s ease forwards;
+}
+
+/* 共通:コンテンツレイアウト（AboutとProfile共通） */
+.content-layout {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+
+.content-layout__image {
+    flex: 1;
+}
+
+.content-layout__image .image-wrapper {
+    border-radius: 8px;
+    overflow: hidden;
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.15));
+}
+
+.content-layout__image .image-wrapper img {
+    width: 100%;
+    display: block;
+}
+
+.content-layout__text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10%;
+}
+
+.content-layout__title {
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    color: #272E3B;
+}
+
+.content-layout__description {
+    font-size: 16px;
+    line-height: 2;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* 共通:セクション上部マージン */
+.section-top-spacing {
+    margin-top: 250px;
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10vh;
+    background-color: #272E3B;
+    z-index: 1000;
+}
+
+.nav {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 70px;
+    position: relative;
+}
+
+/* ナビゲーションロゴ */
+.nav__logo {
+    position: absolute;
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.nav__logo a {
+    display: block;
+    line-height: 0;
+}
+
+.nav__logo-image {
+    width: 90px;
+    height: auto;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+.nav__logo a:hover .nav__logo-image {
+    opacity: 0.7;
+}
+
+.nav__list {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.nav__item {
+    height: 100%;
+    position: relative;
+}
+
+.nav__link {
+    color: #f2f2f2;
+    font-size: 16px;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: slideInFromLeft 0.8s ease-out forwards;
+}
+
+.nav__item:nth-child(1) .nav__link {
+    animation-delay: 0.1s;
+}
+
+.nav__item:nth-child(2) .nav__link {
+    animation-delay: 0.2s;
+}
+
+.nav__item:nth-child(3) .nav__link {
+    animation-delay: 0.3s;
+}
+
+.nav__item:nth-child(4) .nav__link {
+    animation-delay: 0.4s;
+}
+
+.nav__link:hover {
+    opacity: 0.7;
+}
+
+/* ドロップダウンメニュー */
+.nav__item--dropdown {
+    position: relative;
+}
+
+.nav__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #272E3B;
+    min-width: 200px;
+    padding: 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.nav__item--dropdown:hover .nav__dropdown {
+    opacity: 1;
+    visibility: visible;
+}
+
+.nav__dropdown-item {
+    padding: 0;
+}
+
+.nav__dropdown-link {
+    display: block;
+    padding: 10px 20px;
+    color: #f2f2f2;
+    font-size: 14px;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    white-space: nowrap;
+}
+
+.nav__dropdown-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    opacity: 1;
+}
+
+/* ==========================================================================
+   Hero (First View)
+   ========================================================================== */
+.hero {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f2f2f2;
+}
+
+.hero__container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero__title {
+    font-family: 'EB Garamond', serif;
+    font-size: 134px;
+    font-weight: bold;
+    color: #272E3B;
+    margin-bottom: 20px;
+}
+
+.hero__name-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.hero__name-jp {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 75px;
+    font-weight: 500;
+    color: #272E3B;
+}
+
+.hero__name-en {
+    font-family: 'Great Vibes', cursive;
+    font-size: 37px;
+    font-weight: 400;
+    color: #272E3B;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    margin-top: 5px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+/* 一文字ごとのランダムアニメーション */
+.char.random-char {
+    opacity: 0;
+    transform: translate(var(--random-x), var(--random-y));
+}
+
+.char.random-char.is-visible {
+    animation: slideInFromRandom 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ==========================================================================
+   Works Section
+   ========================================================================== */
+.works {
+    padding-top: 100px;
+    padding-bottom: 0;
+}
+
+.works__intro {
+    font-size: 16px;
+    line-height: 2;
+    color: #333;
+    margin-bottom: 120px;
+}
+
+.works__category {
+    margin-bottom: 100px;
+}
+
+.works__category:last-child {
+    margin-bottom: 0;
+}
+
+.works__category-title {
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 130px;
+    opacity: 0;
+    transform: translateX(-100px);
+}
+
+.works__category-title.is-visible {
+    animation: slideInFromLeft 1s ease-out forwards;
+}
+
+.works__lp-item {
+    margin-bottom: 270px;
+}
+
+.works__lp-item:last-child {
+    margin-bottom: 245px;
+}
+
+.works__lp-text {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+    line-height: 1.2;
+    font-size: 79.05px;
+    pointer-events: none;
+}
+
+.works__lp-text--large {
+    font-size: 84.15px;
+}
+
+.hover-link:hover .works__lp-text {
+    opacity: 1;
+}
+
+.works__lp-text-jp {
+    font-family: 'Noto Serif JP', serif;
+}
+
+.works__lp-text-en {
+    font-family: 'EB Garamond', serif;
+}
+
+/* Banners */
+.works__banners {
+    position: relative;
+    height: 900px;
+}
+
+.works__banner-item {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.works__banner-item:nth-child(1) {
+    left: 0;
+    width: 500px;
+}
+
+.works__banner-item:nth-child(1).is-visible {
+    animation-delay: 0.1s;
+}
+
+.works__banner-item:nth-child(2) {
+    top: 130px;
+    right: 0;
+    width: 450px;
+}
+
+.works__banner-item:nth-child(2).is-visible {
+    animation-delay: 0.2s;
+}
+
+.works__banner-item:nth-child(3) {
+    top: 380px;
+    left: 70px;
+    width: 350px;
+}
+
+.works__banner-item:nth-child(3).is-visible {
+    animation-delay: 0.3s;
+}
+
+.works__banner-item:nth-child(4) {
+    top: 600px;
+    right: 0;
+    width: 550px;
+}
+
+.works__banner-item:nth-child(4).is-visible {
+    animation-delay: 0.4s;
+}
+
+.works__banner-item .active-scale {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.works__banner-item .active-scale:active .works__banner-image {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.works__banner-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   About Section
+   ========================================================================== */
+.about {
+    /* section-top-spacingクラスと同じスタイルを適用 */
+}
+
+.about__description {
+    max-width: 20em;
+}
+
+/* ==========================================================================
+   Profile Section
+   ========================================================================== */
+.profile {
+    /* section-top-spacingクラスと同じスタイルを適用 */
+    margin-bottom: 200px;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.footer {
+    background-color: #272E3B;
+    padding: 40px 0;
+    color: #f2f2f2;
+}
+
+.footer__container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.footer__copyright {
+    font-size: 14px;
+}
+
+
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    .nav {
+        padding-right: 20px;
+    }
+    
+    .nav__logo {
+        left: 20px;
+    }
+    
+    .nav__logo-image {
+        width: 60px;
+    }
+    
+    .nav__list {
+        gap: 20px;
+    }
+    
+    .nav__link {
+        opacity: 1;
+        transform: none;
+        animation: none;
+    }
+    
+    .nav__dropdown {
+        display: none;
+    }
+    
+    .hero__title {
+        font-size: 60px;
+        opacity: 1;
+        transform: none;
+        animation: none;
+    }
+    
+    .hero__name-jp {
+        font-size: 36px;
+    }
+    
+    .hero__name-en {
+        font-size: 20px;
+    }
+    
+    .hero__name-wrapper {
+        opacity: 1;
+        transform: none;
+        animation: none;
+    }
+    
+    .works {
+        padding: 64px 0;
+    }
+    
+    .section-title {
+        font-size: 36px;
+        opacity: 1;
+        transform: none;
+        animation: none;
+        margin-bottom: 30px;
+    }
+    
+    .works__intro {
+        font-size: 14px;
+        line-height: 1.8;
+        margin-bottom: 80px;
+    }
+    
+    .works__category {
+        margin-bottom: 64px;
+    }
+    
+    .works__category-title {
+        font-size: 24px;
+        opacity: 1;
+        transform: none;
+        animation: none;
+        margin-bottom: 83.2px;
+    }
+    
+    .works__lp-item {
+        margin-bottom: 172.8px;
+    }
+    
+    .works__lp-item .hover-link {
+        filter: none;
+        transition: none;
+    }
+    
+    .works__lp-item .hover-link:hover {
+        filter: none;
+    }
+    
+    .works__lp-item:last-child {
+        margin-bottom: 196px;
+    }
+    
+    .hover-overlay {
+        display: none;
+    }
+    
+    .works__lp-text {
+        display: none;
+    }
+    
+    .works__banners {
+        position: static;
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .works__banner-item {
+        position: static;
+    }
+    
+    .fade-in-item {
+        opacity: 1;
+        transform: none;
+        animation: none;
+    }
+    
+    .section-top-spacing {
+        padding: 64px 0;
+        margin-top: 100px;
+    }
+    
+    .content-layout {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .content-layout__title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .content-layout__description {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+    
+    .footer {
+        padding: 32px 0;
+    }
+}
