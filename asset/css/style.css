@@ -307,10 +307,20 @@ ul {
     transform: translateY(-50%);
 }
 
+.nav__logo a {
+    display: block;
+    line-height: 0;
+}
+
 .nav__logo-image {
     width: 90px;
     height: auto;
     display: block;
+    transition: opacity 0.3s ease;
+}
+
+.nav__logo a:hover .nav__logo-image {
+    opacity: 0.7;
 }
 
 .nav__list {
