@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>制作について - Portfolio2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Great+Vibes&family=Noto+Serif+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style2.css">
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav__logo">
+                <a href="index.html">
+                    <img src=
+                    "../images/logo.png" alt="ロゴ" class="nav__logo-image">
+                </a>
+            </div>
+            
+            <!-- ハンバーガーメニューボタン -->
+            <button class="hamburger" aria-label="メニュー">
+                <span class="hamburger__line"></span>
+                <span class="hamburger__line"></span>
+                <span class="hamburger__line"></span>
+            </button>
+            
+            <ul class="nav__list">
+                <li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
+                <li class="nav__item nav__item--dropdown">
+                    <a href="#works" class="nav__link">Works</a>
+                    <ul class="nav__dropdown">
+                        <li class="nav__dropdown-item"><a href="#works-lp" class="nav__dropdown-link">ランディングページ</a></li>
+                        <li class="nav__dropdown-item"><a href="#banner" class="nav__dropdown-link">バナー</a></li>
+                    </ul>
+                </li>
+                <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                <li class="nav__item"><a href="#profile" class="nav__link">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main>
+        <!-- ページタイトル -->
+        <section class="detail-page">
+            <div class="detail-container">
+                <h1 class="detail-page__title">バナー</h1>
+
+                <!-- 2カラムレイアウト -->
+                <div class="detail-layout">
+                    <!-- 左側: サムネイル画像 -->
+                    <div class="detail-layout__image" id="stickyImage">
+                        <div class="detail-thumbnails__item">
+                            <img src="../images/serum-banner2.jpg" alt="化粧品バナー">
+                        </div>
+                    </div>
+
+                    <!-- 右側: テキスト情報 -->
+                    <div class="detail-layout__content">
+                        <!-- プロジェクトタイトル -->
+                        <h2 class="detail-project__title">美容液バナー</h2>
+                        <p class="detail-project__subtitle">架空の化粧品会社のインスタグラム用広告バナーを作成しました。</p>
+
+                        <!-- 詳細情報セクション -->
+                        <section class="detail-info">
+                            <h3 class="detail-info__subtitle">サービス内容</h3>
+                            <p class="detail-info__content">
+                                乾燥・毛穴・くすみをケアする高価格帯スキンケア美容液
+                            </p>
+                        </section>
+
+                        <section class="detail-info">
+                            <h3 class="detail-info__subtitle">想定ユーザー</h3>
+                            <p class="detail-info__content">
+                                20代後半〜40代前半。女性。都市部在住プチプラでは満足しない層(ChatGPTに議題提供を依頼)
+                            </p>
+                        </section>
+
+                        <section class="detail-info">
+                            <h3 class="detail-info__subtitle">制作期間</h3>
+                            <p class="detail-info__content">
+                                参考資料調査：1日間。フレームワーク作成・作成：1日。
+                            </p>
+                        </section>
+
+                        <section class="detail-info detail-info--design">
+                            <h3 class="detail-info__subtitle">デザイン制作</h3>
+                            <div class="detail-info__design-list">
+                                <div class="detail-info__design-item">
+                                    <div class="detail-info__design-label"><span>背景デザイン</span><span>：</span></div>
+                                    <div class="detail-info__design-text">高級感とおしゃれさを出すために煌びやかな装飾。奥に綺麗な女性の横顔があることで使用後のイメージをさせる</div>
+                                </div>
+                                <div class="detail-info__design-item">
+                                    <div class="detail-info__design-label"><span>フォント</span><span>：</span></div>
+                                    <div class="detail-info__design-text">高級感、おしゃれさを出すために明朝体を採用</div>
+                                </div>
+                                <div class="detail-info__design-item">
+                                    <div class="detail-info__design-label"><span>カラー</span><span>：</span></div>
+                                    <div class="detail-info__design-text">紺とグレー味のある白、そして背景装飾でもしようされている金を使用。金は帯であったり枠であtたりと補助装飾として使用することでアクセントとなる。</div>
+                                </div>
+                                <div class="detail-info__design-item">
+                                    <div class="detail-info__design-label"><span>全体デザイン</span><span>：</span></div>
+                                    <div class="detail-info__design-text">余裕のある感覚を持たせるためにテキストの字間を広めに開け、メインコピーの後ろに白いぼかしの入った帯を入れることでテキストを斜めにしても勢いのある感じにはならず、むしろゆっくりした印象を持たせる。金の使い方も背景で煌びやかにしている分、テキストや円の枠線に使用しているところは明度を下げた色味にして、全体を引き締めた。
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 使用ツール（右側の一番下） -->
+                        <section class="detail-info" id="toolsSection">
+                            <h3 class="detail-info__subtitle">使用ツール</h3>
+                            <div class="detail-info__tools">
+                                <img src="../images/ps.png" alt="Photoshop" class="detail-info__tool-icon">
+                                <p class="detail-info__content">Photoshop</p>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <!-- 下部バナーカルーセル -->
+                <div class="banner-carousel">
+                    <div class="banner-carousel__track">
+                        <div class="banner-carousel__item">
+                            <a href="index4.html">
+                                <img src="../images/task.jpg" alt="バナー1">
+                            </a>
+                        </div>
+                        <div class="banner-carousel__item">
+                            <a href="index5.html">
+                                <img src="../images/serum-banner1.jpg" alt="バナー2">
+                            </a>
+                        </div>
+                        <div class="banner-carousel__item">
+                            <a href="index6.html">
+                                <img src="../images/serum-banner2.jpg" alt="バナー3">
+                            </a>
+                        </div>
+                        <div class="banner-carousel__item">
+                            <a href="index7.html">
+                                <img src="../images/english.jpg"alt="バナー4">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="footer__container">
+            <p class="footer__copyright">&copy; 2026 Shintaro Ishida. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/index2.js"></script>
+</body>
+</html>
