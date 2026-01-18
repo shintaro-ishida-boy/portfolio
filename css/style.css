@@ -749,6 +749,9 @@ body.menu-open {
     .nav__item {
         width: auto;
         height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     
     .nav__link {
@@ -758,10 +761,10 @@ body.menu-open {
         font-size: 24px;
     }
     
-    /* ドロップダウンをモバイル用に調整 */
+    /* ドロップダウンをモバイル用に調整 - 常に表示 */
     .nav__item--dropdown:hover .nav__dropdown {
-        opacity: 0;
-        visibility: hidden;
+        opacity: 1;
+        visibility: visible;
     }
     
     .nav__dropdown {
@@ -774,12 +777,8 @@ body.menu-open {
         display: flex;
         flex-direction: column;
         gap: 15px;
-    }
-    
-    .nav__item--dropdown.is-open .nav__dropdown {
         opacity: 1;
         visibility: visible;
-        display: flex;
     }
     
     .nav__dropdown-link {
