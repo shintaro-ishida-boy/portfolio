@@ -344,6 +344,7 @@ body.modal-open {
 .detail-project__title {
     font-size: 32px;
     font-weight: 500;
+    margin-bottom: 10px;
     color: #272E3B;
 }
 
@@ -351,7 +352,6 @@ body.modal-open {
     font-size: 16px;
     line-height: 1.8;
     color: #272E3B;
-    margin-bottom: 80px;
 }
 
 /* ==========================================================================
@@ -364,6 +364,7 @@ body.modal-open {
 .detail-info__subtitle {
     font-size: 24px;
     font-weight: 500;
+    margin-bottom: 5px;
     color: #272E3B;
 }
 
@@ -726,11 +727,11 @@ body.modal-open {
 
     .detail-project__subtitle {
         font-size: 14px;
-
     }
 
     .detail-info__subtitle {
         font-size: 16px;
+        margin-bottom: 10px;
     }
 
     .detail-info__content {
@@ -744,7 +745,7 @@ body.modal-open {
 
     .detail-info__design-label {
         font-size: 14px;
-        width: 100px;
+        width: 80px;
         flex-shrink: 0;
     }
     
@@ -785,10 +786,6 @@ body.modal-open {
     .detail-info__tool-item .detail-info__content {
         margin: 0;
         white-space: nowrap;
-    }
-    
-    .detail-bottom-thumbnail__overlay .detail-bottom-thumbnail__text{
-        display: none;
     }
 
     .banner-carousel {
