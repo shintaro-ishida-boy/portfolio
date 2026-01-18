@@ -786,6 +786,10 @@ body.modal-open {
         margin: 0;
         white-space: nowrap;
     }
+    
+    .detail-bottom-thumbnail__overlay .detail-bottom-thumbnail__text{
+        display: none;
+    }
 
     .banner-carousel {
         height: 400px;

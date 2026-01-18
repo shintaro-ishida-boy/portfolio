@@ -908,6 +908,11 @@ body.menu-open {
         display: block;
     }
     
+    .more-link__icon{
+        transform: translate(0,0);
+        opacity: 1;
+    }
+
     .fade-in-item {
         opacity: 1;
         transform: none;
