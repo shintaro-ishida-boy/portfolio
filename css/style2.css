@@ -109,6 +109,54 @@ body {
 }
 
 /* ==========================================================================
+   Hamburger Menu
+   ========================================================================== */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.hamburger__line {
+    width: 100%;
+    height: 3px;
+    background-color: #f2f2f2;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.hamburger.is-active .hamburger__line:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+}
+
+.hamburger.is-active .hamburger__line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.is-active .hamburger__line:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+}
+
+.nav__logo {
+    margin-right: auto;
+    display: none;
+}
+
+.nav__logo-image {
+    height: 40px;
+    width: auto;
+    max-height: 40px;
+    object-fit: contain;
+}
+
+/* ==========================================================================
    Animations
    ========================================================================== */
 @keyframes slideInFromLeft {
@@ -493,6 +541,77 @@ body {
    Responsive
    ========================================================================== */
 @media screen and (max-width: 768px) {
+    /* ハンバーガーメニュー表示 */
+    .hamburger {
+        display: flex;
+    }
+
+    .nav__logo {
+        display: block;
+    }
+
+    .nav__logo-image {
+        height: 40px;
+        max-height: 40px;
+        width: auto;
+    }
+
+    .nav {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .nav__list {
+        position: fixed;
+        top: 10vh;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 10vh);
+        background-color: #272E3B;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 40px;
+        gap: 30px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    }
+
+    .nav__list.is-active {
+        transform: translateX(0);
+    }
+
+    .nav__item {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav__link {
+        display: block;
+        padding: 15px 0;
+        font-size: 18px;
+    }
+
+    .nav__dropdown {
+        position: static;
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+        min-width: auto;
+        padding: 10px 0;
+        background-color: rgba(255, 255, 255, 0.05);
+        margin-top: 10px;
+    }
+
+    .nav__item--dropdown:hover .nav__dropdown {
+        transform: none;
+    }
+
+    .nav__dropdown-link {
+        font-size: 16px;
+    }
+
+    /* ページレイアウト */
     .detail-page {
         padding-top: calc(10vh + 50px);
     }
@@ -550,6 +669,33 @@ body {
 
     .detail-info__design-text {
         font-size: 14px;
+    }
+
+    /* 使用ツールを折り返し対応 */
+    .detail-info__tools {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .detail-info__tool-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-shrink: 0;
+    }
+
+    .detail-info__tool-icon {
+        width: 40px;
+        height: 40px;
+        display: block;
+        flex-shrink: 0;
+    }
+
+    .detail-info__tool-item .detail-info__content {
+        margin: 0;
+        white-space: nowrap;
     }
 
     .banner-carousel {

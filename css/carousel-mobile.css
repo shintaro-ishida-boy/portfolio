@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   Banner Carousel - Mobile Only Styles
+   ========================================================================== */
+
+@media screen and (max-width: 768px) {
+    /* カルーセル全体 */
+    .banner-carousel {
+        height: 350px;
+        overflow: hidden;
+    }
+
+    /* トラック */
+    .banner-carousel__track {
+        height: 350px;
+    }
+
+    /* 全てのアイテムの基本設定 */
+    .banner-carousel__item {
+        max-width: 90%;
+        max-height: 300px;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        filter: brightness(1);
+    }
+
+    /* 中央（表示中）のアイテム */
+    .banner-carousel__item--center {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        z-index: 10;
+        max-width: 90%;
+    }
+
+    /* 左右のアイテムは完全非表示 */
+    .banner-carousel__item--left,
+    .banner-carousel__item--right {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        display: none;
+    }
+
+    /* 矢印ボタンを非表示 */
+    .banner-carousel__arrow,
+    .banner-carousel__arrow--prev,
+    .banner-carousel__arrow--next {
+        display: none;
+    }
+
+    /* 画像のスタイル調整 */
+    .banner-carousel__item img {
+        max-height: 300px;
+        width: auto;
+        margin: 0 auto;
+    }
+}

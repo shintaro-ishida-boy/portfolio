@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
     const navLinks = document.querySelectorAll('.nav__link');
     const dropdownItems = document.querySelectorAll('.nav__item--dropdown');
+    const dropdownLinks = document.querySelectorAll('.nav__dropdown-link');
     
     if (hamburger && navList) {
         // ハンバーガーボタンのクリックイベント
@@ -20,6 +21,15 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // メニューリンクをクリックしたらメニューを閉じる
         navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('is-active');
+                navList.classList.remove('is-active');
+                body.classList.remove('menu-open');
+            });
+        });
+        
+        // ドロップダウンのサブメニューリンクをクリックしたらメニューを閉じる
+        dropdownLinks.forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('is-active');
                 navList.classList.remove('is-active');
