@@ -3,7 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // モバイルデバイスの判定
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
     
+    // ========================================
     // Intersection Observerの設定
+    // ========================================
     const observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -32,7 +34,97 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(profilePageTitle);
     }
 
+    // ========================================
+    // 画像拡大モーダル機能（モバイルのみ）
+    // ========================================
+    const thumbnailItems = document.querySelectorAll('.detail-thumbnails__item');
+    
+    if (thumbnailItems.length > 0 && isMobile) {
+        // モーダル要素を作成
+        const modal = document.createElement('div');
+        modal.className = 'image-modal';
+        modal.innerHTML = `
+            <div class="image-modal__content">
+                <button class="image-modal__close" aria-label="閉じる">&times;</button>
+                <img class="image-modal__image" src="" alt="">
+            </div>
+        `;
+        document.body.appendChild(modal);
+
+        const modalImage = modal.querySelector('.image-modal__image');
+        const closeButton = modal.querySelector('.image-modal__close');
+
+        // 画像クリックでモーダルを開く
+        thumbnailItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const img = this.querySelector('img');
+                if (img) {
+                    modalImage.src = img.src;
+                    modalImage.alt = img.alt;
+                    modal.classList.add('active');
+                    document.body.classList.add('modal-open');
+                }
+            });
+        });
+
+        // 閉じるボタンでモーダルを閉じる
+        closeButton.addEventListener('click', function() {
+            closeModal();
+        });
+
+        // モーダル背景クリックで閉じる
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // ESCキーでモーダルを閉じる
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        // モーダルを閉じる関数
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.classList.remove('modal-open');
+            // アニメーション後に画像をクリア
+            setTimeout(() => {
+                modalImage.src = '';
+            }, 300);
+        }
+    }
+
+    // ========================================
+    // ハンバーガーメニュー
+    // ========================================
+    const hamburger = document.querySelector('.hamburger');
+    const navList = document.querySelector('.nav__list');
+    const body = document.body;
+
+    if (hamburger) {
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('is-active');
+            navList.classList.toggle('is-active');
+            body.classList.toggle('menu-open');
+        });
+
+        // メニューリンクをクリックしたらメニューを閉じる
+        const navLinks = document.querySelectorAll('.nav__link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('is-active');
+                navList.classList.remove('is-active');
+                body.classList.remove('menu-open');
+            });
+        });
+    }
+
+    // ========================================
     // バナーカルーセルの処理
+    // ========================================
     const carousel = document.querySelector('.banner-carousel');
     const track = document.querySelector('.banner-carousel__track');
     
@@ -171,7 +263,9 @@ document.addEventListener('DOMContentLoaded', () => {
         startAutoSlide();
     }
     
+    // ========================================
     // スムーススクロール
+    // ========================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
