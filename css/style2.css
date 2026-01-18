@@ -146,7 +146,6 @@ body {
 
 .nav__logo {
     margin-right: auto;
-    display: none;
 }
 
 .nav__logo-image {
@@ -551,8 +550,6 @@ body {
     }
 
     .nav__logo-image {
-        height: 40px;
-        max-height: 40px;
         width: auto;
     }
 

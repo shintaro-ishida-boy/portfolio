@@ -710,9 +710,7 @@ body.menu-open {
     
     /* ロゴサイズを40pxに統一 */
     .nav__logo-image {
-        width: 40px;
         height: auto;
-        max-height: 40px;
     }
     
     /* ハンバーガーメニューボタンを表示 */
