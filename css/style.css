@@ -16,7 +16,7 @@ html {
 body {
     font-family: 'Noto Serif JP', serif;
     color: #333;
-    background-color: #f2f2f2;
+    background-color: fefefe;
     line-height: 1.6;
 }
 
@@ -323,6 +323,47 @@ ul {
     opacity: 0.7;
 }
 
+/* ハンバーガーメニューボタン */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+    position: relative;
+}
+
+.hamburger__line {
+    width: 100%;
+    height: 3px;
+    background-color: #fefefe;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+/* ハンバーガーメニュー開閉時のアニメーション */
+.hamburger.is-active .hamburger__line:nth-child(1) {
+    transform: translateY(10.5px) rotate(45deg);
+}
+
+.hamburger.is-active .hamburger__line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.is-active .hamburger__line:nth-child(3) {
+    transform: translateY(-10.5px) rotate(-45deg);
+}
+
+/* メニューオープン時のbodyスクロール制御 */
+body.menu-open {
+    overflow: hidden;
+}
+
 .nav__list {
     display: flex;
     align-items: center;
@@ -335,7 +376,7 @@ ul {
 }
 
 .nav__link {
-    color: #f2f2f2;
+    color: #fefefe;
     font-size: 16px;
     transition: opacity 0.3s ease;
     opacity: 0;
@@ -395,7 +436,7 @@ ul {
 .nav__dropdown-link {
     display: block;
     padding: 10px 20px;
-    color: #f2f2f2;
+    color: #fefefe;
     font-size: 14px;
     transition: background-color 0.3s ease, opacity 0.3s ease;
     white-space: nowrap;
@@ -415,7 +456,7 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f2f2f2;
+    background-color: #fefefe;
 }
 
 .hero__container {
@@ -604,7 +645,7 @@ ul {
 }
 
 .works__banner-image {
-    max-width: 100%;
+    width: 100%;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -655,30 +696,96 @@ ul {
    Responsive
    ========================================================================== */
 @media screen and (max-width: 768px) {
+    /* 共通の余白設定 */
+    .section-container {
+        padding: 0 4%;
+    }
+    
     .nav {
-        padding-right: 20px;
+        padding-right: 4%;
+        padding-left: 4%;
     }
     
     .nav__logo {
-        left: 20px;
+        left: 4%;
     }
     
     .nav__logo-image {
         width: 60px;
     }
     
+    /* ハンバーガーメニューボタンを表示 */
+    .hamburger {
+        display: flex;
+        position: absolute;
+        right: 4%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    /* ナビゲーションメニューを全画面オーバーレイに */
     .nav__list {
-        gap: 20px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #272E3B;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        z-index: 999;
+    }
+    
+    .nav__list.is-active {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .nav__item {
+        width: auto;
+        height: auto;
     }
     
     .nav__link {
         opacity: 1;
         transform: none;
         animation: none;
+        font-size: 24px;
+    }
+    
+    /* ドロップダウンをモバイル用に調整 */
+    .nav__item--dropdown:hover .nav__dropdown {
+        opacity: 0;
+        visibility: hidden;
     }
     
     .nav__dropdown {
-        display: none;
+        position: static;
+        transform: none;
+        background-color: transparent;
+        margin-top: 10px;
+        padding: 10px 0;
+        min-width: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav__item--dropdown.is-open .nav__dropdown {
+        opacity: 1;
+        visibility: visible;
+        display: flex;
+    }
+    
+    .nav__dropdown-link {
+        font-size: 18px;
+        text-align: center;
+        padding: 5px 10px;
     }
     
     .hero__title {
@@ -704,6 +811,7 @@ ul {
     
     .works {
         padding: 64px 0;
+        width: 100%;
     }
     
     .section-title {
@@ -763,10 +871,41 @@ ul {
         display: grid;
         grid-template-columns: 1fr;
         gap: 30px;
+        padding: 0;
+        width:100%;
     }
     
-    .works__banner-item {
+    .works__banners .works__banner-item {
         position: static;
+        width: 100%;
+        padding: 0;
+        box-sizing: border-box;
+        left: auto;
+        right: auto;
+        top: auto;
+    }
+    
+    .works__banners .works__banner-item:nth-child(1),
+    .works__banners .works__banner-item:nth-child(2),
+    .works__banners .works__banner-item:nth-child(3),
+    .works__banners .works__banner-item:nth-child(4) {
+        position: static;
+        width: 100%;
+        left: auto;
+        right: auto;
+        top: auto;
+    }
+
+    .works__banner-item .active-scale {
+        width: 100%;
+        display: block;
+    }
+    
+    .works__banner-image {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        display: block;
     }
     
     .fade-in-item {
@@ -785,6 +924,10 @@ ul {
         gap: 40px;
     }
     
+    .content-layout__text{
+        padding: 0;
+    }
+
     .content-layout__title {
         font-size: 24px;
         margin-bottom: 20px;
@@ -796,6 +939,6 @@ ul {
     }
     
     .footer {
-        padding: 32px 0;
+        padding: 32px 4%;
     }
 }

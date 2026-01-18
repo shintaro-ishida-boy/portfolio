@@ -3,6 +3,42 @@ document.addEventListener('DOMContentLoaded', () => {
     // モバイルデバイスの判定
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
     
+    // ハンバーガーメニューの処理
+    const hamburger = document.querySelector('.hamburger');
+    const navList = document.querySelector('.nav__list');
+    const body = document.body;
+    const navLinks = document.querySelectorAll('.nav__link');
+    const dropdownItems = document.querySelectorAll('.nav__item--dropdown');
+    
+    if (hamburger && navList) {
+        // ハンバーガーボタンのクリックイベント
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('is-active');
+            navList.classList.toggle('is-active');
+            body.classList.toggle('menu-open');
+        });
+        
+        // メニューリンクをクリックしたらメニューを閉じる
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('is-active');
+                navList.classList.remove('is-active');
+                body.classList.remove('menu-open');
+            });
+        });
+        
+        // モバイルでのドロップダウン処理
+        if (isMobile) {
+            dropdownItems.forEach(item => {
+                const link = item.querySelector('.nav__link');
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    item.classList.toggle('is-open');
+                });
+            });
+        }
+    }
+    
     // スクロールアニメーション(モバイル以外のみ)
     if (!isMobile) {
         // FVテキストを一文字ずつに分割してランダムアニメーション

@@ -15,22 +15,30 @@
     <header class="header">
         <nav class="nav">
             <div class="nav__logo">
-                <a href="../../index.html">
-                    <img src="../images/logo.png" alt="ロゴ" class="nav__logo-image">
+                <a href="index.html">
+                    <img src=
+                    "../images/logo.png" alt="ロゴ" class="nav__logo-image">
                 </a>
             </div>
-    <ul class="nav__list">
+            
+            <!-- ハンバーガーメニューボタン -->
+            <button class="hamburger" aria-label="メニュー">
+                <span class="hamburger__line"></span>
+                <span class="hamburger__line"></span>
+                <span class="hamburger__line"></span>
+            </button>
+            
             <ul class="nav__list">
-                <li class="nav__item"><a href="../../index.html#home" class="nav__link">Home</a></li>
+                <li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
                 <li class="nav__item nav__item--dropdown">
-                    <a href="../../index.html#works" class="nav__link">Works</a>
+                    <a href="#works" class="nav__link">Works</a>
                     <ul class="nav__dropdown">
-                        <li class="nav__dropdown-item"><a href="../../index.html#works-lp" class="nav__dropdown-link">ランディングページ</a></li>
-                        <li class="nav__dropdown-item"><a href="../../index.html#works-banner" class="nav__dropdown-link">バナー</a></li>
+                        <li class="nav__dropdown-item"><a href="#works-lp" class="nav__dropdown-link">ランディングページ</a></li>
+                        <li class="nav__dropdown-item"><a href="#banner" class="nav__dropdown-link">バナー</a></li>
                     </ul>
                 </li>
-                <li class="nav__item"><a href="../../index.html#about" class="nav__link">About</a></li>
-                <li class="nav__item"><a href="../../index.html#profile" class="nav__link">Profile</a></li>
+                <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                <li class="nav__item"><a href="#profile" class="nav__link">Profile</a></li>
             </ul>
         </nav>
     </header>
