@@ -95,8 +95,8 @@ ul {
 
 /* 共通:セクションタイトル */
 .section-title {
-    font-size: 48px;
-    font-weight: 500;
+    font-size: 56px;
+    font-weight: bold;
     margin-bottom: 40px;
     opacity: 0;
     transform: translateX(-100px);
@@ -206,6 +206,7 @@ ul {
 
 .more-link__text {
     display: inline-block;
+    font-weight: bold;
 }
 
 .more-link__icon {
@@ -286,7 +287,7 @@ ul {
     left: 0;
     width: 100%;
     height: 10vh;
-    background-color: #272E3B;
+    background-color: #F7951B;
     z-index: 1000;
 }
 
@@ -376,8 +377,9 @@ body.menu-open {
 }
 
 .nav__link {
-    color: #fefefe;
-    font-size: 16px;
+    color: #272E3B;
+    font-weight: 500;
+    font-size: 20px;
     transition: opacity 0.3s ease;
     opacity: 0;
     transform: translateX(-50px);
@@ -534,8 +536,8 @@ body.menu-open {
 }
 
 .works__category-title {
-    font-size: 32px;
-    font-weight: 500;
+    font-size: 36px;
+    font-weight: bold;
     margin-bottom: 130px;
     opacity: 0;
     transform: translateX(-100px);
@@ -815,7 +817,8 @@ body.menu-open {
     }
     
     .section-title {
-        font-size: 36px;
+        font-size: 48px;
+        font-weight: bold;
         opacity: 1;
         transform: none;
         animation: none;
@@ -908,7 +911,7 @@ body.menu-open {
         display: block;
     }
     
-    .more-link__icon{
+    .more-link{
         transform: translate(0,0);
         opacity: 1;
     }
