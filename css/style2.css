@@ -549,8 +549,11 @@ body {
         display: block;
     }
 
+    /* ロゴサイズを60pxに統一 */
     .nav__logo-image {
-        width: auto;
+        width: 60px;
+        height: auto;
+        max-width: 60px;
     }
 
     .nav {

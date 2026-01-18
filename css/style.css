@@ -708,9 +708,11 @@ body.menu-open {
         left: 4%;
     }
     
-    /* ロゴサイズを40pxに統一 */
+    /* ロゴサイズを60pxに統一 */
     .nav__logo-image {
+        width: 60px;
         height: auto;
+        max-width: 60px;
     }
     
     /* ハンバーガーメニューボタンを表示 */
