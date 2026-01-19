@@ -203,7 +203,46 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // スムーススクロール
+    // ページ読み込み時にURLハッシュがあれば対応するセクションへスクロール
+    function scrollToHash(hash) {
+        if (!hash || hash === '#') return;
+        
+        const targetElement = document.querySelector(hash);
+        if (targetElement) {
+            // ヘッダーの高さを取得（10vh）
+            const headerHeight = window.innerHeight * 0.1;
+            
+            // ターゲット要素の位置を取得
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+            
+            let offsetPosition;
+            
+            // aboutとprofileの場合は画面中央に配置
+            if (hash === '#about' || hash === '#profile') {
+                const viewportCenterOffset = (window.innerHeight - headerHeight) / 2;
+                const elementHalfHeight = targetElement.offsetHeight / 2;
+                offsetPosition = targetPosition - headerHeight - viewportCenterOffset + elementHalfHeight;
+            } else {
+                offsetPosition = targetPosition - headerHeight;
+            }
+            
+            // スムーズにスクロール
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    }
+    
+    // ページ読み込み時のハッシュ処理
+    if (window.location.hash) {
+        // DOM構築完了後に少し遅延させてスクロール
+        setTimeout(() => {
+            scrollToHash(window.location.hash);
+        }, 100);
+    }
+
+    // スムーススクロール（ヘッダーオフセット対応）
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
@@ -217,16 +256,40 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('ターゲット要素:', targetElement); // デバッグ用
             
             if (targetElement) {
-                const header = document.querySelector('.header');
-                const headerHeight = header ? header.offsetHeight : 0;
-                const targetPosition = targetElement.offsetTop - headerHeight;
+                // ヘッダーの高さを取得（10vh）
+                const headerHeight = window.innerHeight * 0.1;
                 
-                console.log('スクロール位置:', targetPosition); // デバッグ用
+                // ターゲット要素の位置を取得
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                
+                let offsetPosition;
+                
+                // aboutとprofileの場合は画面中央に配置
+                if (targetId === '#about' || targetId === '#profile') {
+                    // ヘッダーを除いた画面の高さの半分
+                    const viewportCenterOffset = (window.innerHeight - headerHeight) / 2;
+                    // 要素の高さの半分
+                    const elementHalfHeight = targetElement.offsetHeight / 2;
+                    // 画面中央に配置するための計算
+                    offsetPosition = targetPosition - headerHeight - viewportCenterOffset + elementHalfHeight;
+                } else {
+                    // その他のセクションはヘッダー分上にオフセット
+                    offsetPosition = targetPosition - headerHeight;
+                }
+                
+                console.log('スクロール位置:', offsetPosition); // デバッグ用
                 
                 window.scrollTo({
-                    top: targetPosition,
+                    top: offsetPosition,
                     behavior: 'smooth'
                 });
+                
+                // モバイルメニューが開いている場合は閉じる
+                if (navList && navList.classList.contains('is-active')) {
+                    hamburger.classList.remove('is-active');
+                    navList.classList.remove('is-active');
+                    body.classList.remove('menu-open');
+                }
             } else {
                 console.log('ターゲット要素が見つかりません:', targetId); // デバッグ用
             }

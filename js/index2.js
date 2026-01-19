@@ -98,31 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========================================
-    // ハンバーガーメニュー
-    // ========================================
-    const hamburger = document.querySelector('.hamburger');
-    const navList = document.querySelector('.nav__list');
-    const body = document.body;
-
-    if (hamburger) {
-        hamburger.addEventListener('click', function() {
-            this.classList.toggle('is-active');
-            navList.classList.toggle('is-active');
-            body.classList.toggle('menu-open');
-        });
-
-        // メニューリンクをクリックしたらメニューを閉じる
-        const navLinks = document.querySelectorAll('.nav__link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                hamburger.classList.remove('is-active');
-                navList.classList.remove('is-active');
-                body.classList.remove('menu-open');
-            });
-        });
-    }
-
-    // ========================================
     // バナーカルーセルの処理
     // ========================================
     const carousel = document.querySelector('.banner-carousel');
@@ -262,26 +237,4 @@ document.addEventListener('DOMContentLoaded', () => {
         updateDisplay();
         startAutoSlide();
     }
-    
-    // ========================================
-    // スムーススクロール
-    // ========================================
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                const headerHeight = document.querySelector('.header').offsetHeight;
-                const targetPosition = targetElement.offsetTop - headerHeight;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
 });

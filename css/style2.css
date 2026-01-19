@@ -4,6 +4,11 @@
    Detail Page Specific Styles（詳細ページ専用スタイル）
    ========================================================================== */
 
+body {
+    background-color: #fefefe;
+    color: #272E3B;
+}
+
 .detail-page {
     padding-top: calc(10vh + 50px);
     min-height: 100vh;
