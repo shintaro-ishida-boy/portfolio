@@ -19,6 +19,7 @@
     /* 全てのアイテムの基本設定 */
     .banner-carousel__item {
         max-width: 90%;
+        width: 90%;
         max-height: 300px;
         opacity: 0;
         visibility: hidden;
@@ -36,7 +37,6 @@
         visibility: visible;
         pointer-events: auto;
         z-index: 10;
-        max-width: 90%;
     }
 
     /* 左右のアイテムは完全非表示 */
@@ -57,8 +57,10 @@
 
     /* 画像のスタイル調整 */
     .banner-carousel__item img {
+        width: 100%;
+        height: auto;
         max-height: 300px;
-        width: auto;
+        object-fit: contain;
         margin: 0 auto;
     }
 }
