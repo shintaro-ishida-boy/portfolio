@@ -15,7 +15,7 @@ html {
 
 body {
     font-family: 'Noto Serif JP', serif;
-    color: #333;
+    color: #272E3B;
     background-color: #fefefe;
     line-height: 1.6;
 }
@@ -345,7 +345,7 @@ ul {
 .hamburger__line {
     width: 100%;
     height: 3px;
-    background-color: #fefefe;
+    background-color: #272E3B;
     transition: all 0.3s ease;
     border-radius: 2px;
 }
