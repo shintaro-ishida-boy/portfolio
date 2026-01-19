@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /* ==========================================================================
-   Detail Page Common Styles
+   Detail Page Specific Styles（詳細ページ専用スタイル）
    ========================================================================== */
 
 body {
@@ -21,151 +21,6 @@ body {
 }
 
 /* ==========================================================================
-   Header Dropdown
-   ========================================================================== */
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 10vh;
-    background-color: #272E3B;
-    z-index: 1000;
-}
-
-.nav {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 70px;
-}
-
-.nav__list {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-}
-
-.nav__item {
-    height: 100%;
-    position: relative;
-}
-
-.nav__link {
-    color: #f2f2f2;
-    font-size: 16px;
-    transition: opacity 0.3s ease;
-    text-decoration: none;
-}
-
-.nav__link:hover {
-    opacity: 0.7;
-}
-
-.nav__item--dropdown {
-    position: relative;
-}
-
-.nav__dropdown {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%) scaleX(0);
-    transform-origin: center center;
-    background-color: #272E3B;
-    min-width: 180px;
-    padding: 10px 0 0 0;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-    list-style: none;
-}
-
-.nav__item--dropdown:hover .nav__dropdown {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) scaleX(1);
-}
-
-.nav__dropdown-item {
-    padding: 0;
-}
-
-.nav__dropdown-item:last-child {
-    padding-bottom: 0;
-}
-
-.nav__dropdown-link {
-    display: block;
-    padding: 10px 20px;
-    color: #f2f2f2;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-}
-
-.nav__dropdown-link:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-/* ==========================================================================
-   Hamburger Menu
-   ========================================================================== */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 30px;
-    height: 25px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    z-index: 1001;
-}
-
-.hamburger__line {
-    width: 100%;
-    height: 3px;
-    background-color: #f2f2f2;
-    transition: all 0.3s ease;
-    border-radius: 2px;
-}
-
-.hamburger.is-active .hamburger__line:nth-child(1) {
-    transform: translateY(11px) rotate(45deg);
-}
-
-.hamburger.is-active .hamburger__line:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger.is-active .hamburger__line:nth-child(3) {
-    transform: translateY(-11px) rotate(-45deg);
-}
-
-.nav__logo {
-    margin-right: auto;
-}
-
-.nav__logo-image {
-    height: 40px;
-    width: auto;
-    max-height: 40px;
-    object-fit: contain;
-}
-
-/* ==========================================================================
-   Animations
-   ========================================================================== */
-@keyframes slideInFromLeft {
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-/* ==========================================================================
    Page Title
    ========================================================================== */
 .detail-page__title {
@@ -182,7 +37,7 @@ body {
 }
 
 /* ==========================================================================
-   2 Column Layout - 修正版（左側画像を上に配置）
+   2 Column Layout
    ========================================================================== */
 .detail-layout {
     display: flex;
@@ -192,7 +47,6 @@ body {
     width: 100%;
 }
 
-/* 左側の画像エリア - 固定表示（上部配置） */
 .detail-layout__image {
     flex: 0 0 40%;
     max-width: 40%;
@@ -201,7 +55,6 @@ body {
     align-self: flex-start;
 }
 
-/* 左側の画像が固定解除されたとき */
 .detail-layout__image.sticky-released {
     position: relative;
     top: auto;
@@ -218,7 +71,6 @@ body {
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
 }
 
-/* 右側のコンテンツエリア */
 .detail-layout__content {
     flex: 0 0 60%;
     max-width: 60%;
@@ -236,7 +88,7 @@ body {
 }
 
 /* ==========================================================================
-   Thumbnails (for LP Pages)
+   Thumbnails
    ========================================================================== */
 .detail-thumbnails {
     display: flex;
@@ -255,7 +107,6 @@ body {
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
 }
 
-/* Single Thumbnail (for Banner Page) */
 .detail-thumbnails--single {
     justify-content: center;
 }
@@ -266,7 +117,7 @@ body {
 }
 
 /* ==========================================================================
-   Image Modal (画像拡大モーダル)
+   Image Modal
    ========================================================================== */
 .image-modal {
     display: none;
@@ -333,13 +184,8 @@ body {
     opacity: 0.7;
 }
 
-/* モーダル表示中のbodyスクロール制御 */
-body.modal-open {
-    overflow: hidden;
-}
-
 /* ==========================================================================
-   Project Title
+   Project Info
    ========================================================================== */
 .detail-project__title {
     font-size: 32px;
@@ -375,7 +221,6 @@ body.modal-open {
     margin-top: 0;
 }
 
-/* Design Section - 2 Column Layout */
 .detail-info__design-list {
     display: flex;
     flex-direction: column;
@@ -415,7 +260,6 @@ body.modal-open {
     flex: 1;
 }
 
-/* Tools Section - 右側の一番下に配置 */
 .detail-info--tools {
     margin-top: 60px;
     margin-bottom: 0;
@@ -434,7 +278,7 @@ body.modal-open {
 }
 
 /* ==========================================================================
-   Bottom Thumbnail (LP Pages)
+   Bottom Thumbnail
    ========================================================================== */
 .detail-bottom-thumbnail {
     max-width: 782px;
@@ -495,7 +339,7 @@ body.modal-open {
 }
 
 /* ==========================================================================
-   Banner Carousel (Banner Page)
+   Banner Carousel
    ========================================================================== */
 .banner-carousel {
     max-width: 1140px;
@@ -554,7 +398,6 @@ body.modal-open {
     transform: translate(-50%, -50%);
 }
 
-/* 左の画像 */
 .banner-carousel__item--left {
     left: 5%;
     top: 50%;
@@ -565,7 +408,6 @@ body.modal-open {
     z-index: 1;
 }
 
-/* 中央の画像（メイン） */
 .banner-carousel__item--center {
     left: 50%;
     top: 50%;
@@ -579,7 +421,6 @@ body.modal-open {
     max-height: 500px;
 }
 
-/* 右の画像 */
 .banner-carousel__item--right {
     right: 5%;
     top: 50%;
@@ -621,78 +462,6 @@ body.modal-open {
    Responsive
    ========================================================================== */
 @media screen and (max-width: 768px) {
-    /* ハンバーガーメニュー表示 */
-    .hamburger {
-        display: flex;
-    }
-
-    .nav__logo {
-        display: block;
-    }
-
-    /* ロゴサイズを60pxに統一 */
-    .nav__logo-image {
-        width: 60px;
-        height: auto;
-        max-width: 60px;
-    }
-
-    .nav {
-        padding-right: 20px;
-        padding-left: 20px;
-    }
-
-    .nav__list {
-        position: fixed;
-        top: 10vh;
-        left: 0;
-        width: 100%;
-        height: calc(100vh - 10vh);
-        background-color: #272E3B;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        padding-top: 40px;
-        gap: 30px;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-    }
-
-    .nav__list.is-active {
-        transform: translateX(0);
-    }
-
-    .nav__item {
-        width: 100%;
-        text-align: center;
-    }
-
-    .nav__link {
-        display: block;
-        padding: 15px 0;
-        font-size: 18px;
-    }
-
-    .nav__dropdown {
-        position: static;
-        transform: none;
-        opacity: 1;
-        visibility: visible;
-        min-width: auto;
-        padding: 10px 0;
-        background-color: rgba(255, 255, 255, 0.05);
-        margin-top: 10px;
-    }
-
-    .nav__item--dropdown:hover .nav__dropdown {
-        transform: none;
-    }
-
-    .nav__dropdown-link {
-        font-size: 16px;
-    }
-
-    /* ページレイアウト */
     .detail-page {
         padding-top: calc(10vh + 50px);
     }
@@ -761,7 +530,6 @@ body.modal-open {
         font-size: 14px;
     }
 
-    /* 使用ツールを折り返し対応 */
     .detail-info__tools {
         display: flex;
         align-items: flex-start;
@@ -788,6 +556,30 @@ body.modal-open {
         white-space: nowrap;
     }
 
+    .detail-bottom-thumbnail__link {
+        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+        pointer-events: auto;
+    }
+    
+    .detail-bottom-thumbnail__link:hover,
+    .detail-bottom-thumbnail__link:active {
+        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+    }
+    
+    .detail-bottom-thumbnail__overlay,
+    .detail-bottom-thumbnail__text {
+        display: none !important;
+        opacity: 0 !important;
+    }
+    
+    .detail-bottom-thumbnail__link:hover .detail-bottom-thumbnail__overlay,
+    .detail-bottom-thumbnail__link:hover .detail-bottom-thumbnail__text,
+    .detail-bottom-thumbnail__link:active .detail-bottom-thumbnail__overlay,
+    .detail-bottom-thumbnail__link:active .detail-bottom-thumbnail__text {
+        display: none !important;
+        opacity: 0 !important;
+    }
+
     .banner-carousel {
         height: 400px;
         margin-bottom: 100px;
@@ -803,12 +595,10 @@ body.modal-open {
         max-height: 350px;
     }
 
-    /* サムネイル画像のモバイル対応 */
     .detail-thumbnails__item {
         cursor: pointer;
     }
 
-    /* モーダルのレスポンシブ調整 */
     .image-modal__close {
         top: 10px;
         right: 10px;

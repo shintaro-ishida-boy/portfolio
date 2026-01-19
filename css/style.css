@@ -306,6 +306,7 @@ ul {
     left: 40px;
     top: 50%;
     transform: translateY(-50%);
+    margin-right: auto;
 }
 
 .nav__logo a {
@@ -318,6 +319,8 @@ ul {
     height: auto;
     display: block;
     transition: opacity 0.3s ease;
+    max-height: 40px;
+    object-fit: contain;
 }
 
 .nav__logo a:hover .nav__logo-image {
@@ -361,7 +364,8 @@ ul {
 }
 
 /* メニューオープン時のbodyスクロール制御 */
-body.menu-open {
+body.menu-open,
+body.modal-open {
     overflow: hidden;
 }
 
@@ -424,6 +428,7 @@ body.menu-open {
     transition: opacity 0.3s ease, visibility 0.3s ease;
     border-radius: 4px;
     margin-top: 10px;
+    list-style: none;
 }
 
 .nav__item--dropdown:hover .nav__dropdown {
@@ -911,9 +916,10 @@ body.menu-open {
         display: block;
     }
     
-    .more-link{
+    .more-link__icon{
         transform: translate(0,0);
         opacity: 1;
+        display: inline-block;
     }
 
     .fade-in-item {
