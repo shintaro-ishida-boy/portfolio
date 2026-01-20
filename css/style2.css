@@ -188,7 +188,7 @@ body {
    Project Info
    ========================================================================== */
 .detail-project__title {
-    font-size: 32px;
+    font-size: 40px;
     font-weight: 500;
     margin-bottom: 10px;
     color: #272E3B;
@@ -196,6 +196,7 @@ body {
 
 .detail-project__subtitle {
     font-size: 16px;
+    margin-bottom: 80px;
     line-height: 1.8;
     color: #272E3B;
 }
