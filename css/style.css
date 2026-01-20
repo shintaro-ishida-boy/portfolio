@@ -751,6 +751,15 @@ body.modal-open {
         visibility: visible;
     }
     
+    .nav__list:not(.is-active) {
+        pointer-events: none;  /* タップイベントを無効化 */
+    }
+    
+    /* メニューが開いている時だけ有効化 */
+    .nav__list.is-active {
+        pointer-events: auto;
+    }
+
     .nav__item {
         width: auto;
         height: auto;
@@ -906,12 +915,6 @@ body.modal-open {
         display: block;
     }
     
-    .hover-overlay,
-    .works__lp-text,
-    .hover-text {
-        display: none ;
-        pointer-events: none ;
-    }
     
     /* リンク全体をタップ可能に */
     .hover-link {
